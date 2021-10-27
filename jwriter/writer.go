@@ -265,158 +265,132 @@ func (w *Writer) Base64Bytes(data []byte) {
 }
 
 func (w *Writer) Uint8(n uint8) {
-	w.Buffer.EnsureSpace(3)
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 }
 
 func (w *Writer) Uint16(n uint16) {
-	w.Buffer.EnsureSpace(5)
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 }
 
 func (w *Writer) Uint32(n uint32) {
-	w.Buffer.EnsureSpace(10)
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 }
 
 func (w *Writer) Uint(n uint) {
-	w.Buffer.EnsureSpace(20)
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 }
 
 func (w *Writer) Uint64(n uint64) {
-	w.Buffer.EnsureSpace(20)
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, n, 10)
 }
 
 func (w *Writer) Int8(n int8) {
-	w.Buffer.EnsureSpace(4)
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, int64(n), 10)
 }
 
 func (w *Writer) Int16(n int16) {
-	w.Buffer.EnsureSpace(6)
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, int64(n), 10)
 }
 
 func (w *Writer) Int32(n int32) {
-	w.Buffer.EnsureSpace(11)
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, int64(n), 10)
 }
 
 func (w *Writer) Int(n int) {
-	w.Buffer.EnsureSpace(21)
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, int64(n), 10)
 }
 
 func (w *Writer) Int64(n int64) {
-	w.Buffer.EnsureSpace(21)
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, n, 10)
 }
 
 func (w *Writer) Uint8Str(n uint8) {
-	w.Buffer.EnsureSpace(3)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) Uint16Str(n uint16) {
-	w.Buffer.EnsureSpace(5)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) Uint32Str(n uint32) {
-	w.Buffer.EnsureSpace(10)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) UintStr(n uint) {
-	w.Buffer.EnsureSpace(20)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) Uint64Str(n uint64) {
-	w.Buffer.EnsureSpace(20)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, n, 10)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) UintptrStr(n uintptr) {
-	w.Buffer.EnsureSpace(20)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) Int8Str(n int8) {
-	w.Buffer.EnsureSpace(4)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, int64(n), 10)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) Int16Str(n int16) {
-	w.Buffer.EnsureSpace(6)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, int64(n), 10)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) Int32Str(n int32) {
-	w.Buffer.EnsureSpace(11)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, int64(n), 10)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) IntStr(n int) {
-	w.Buffer.EnsureSpace(21)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, int64(n), 10)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) Int64Str(n int64) {
-	w.Buffer.EnsureSpace(21)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, n, 10)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) Float32(n float32) {
-	w.Buffer.EnsureSpace(20)
 	w.Buffer.Buf = strconv.AppendFloat(w.Buffer.Buf, float64(n), 'g', -1, 32)
 }
 
 func (w *Writer) Float32Str(n float32) {
-	w.Buffer.EnsureSpace(20)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendFloat(w.Buffer.Buf, float64(n), 'g', -1, 32)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) Float64(n float64) {
-	w.Buffer.EnsureSpace(20)
 	w.Buffer.Buf = strconv.AppendFloat(w.Buffer.Buf, n, 'g', -1, 64)
 }
 
 func (w *Writer) Float64Str(n float64) {
-	w.Buffer.EnsureSpace(20)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 	w.Buffer.Buf = strconv.AppendFloat(w.Buffer.Buf, float64(n), 'g', -1, 64)
 	w.Buffer.Buf = append(w.Buffer.Buf, '"')
 }
 
 func (w *Writer) Bool(v bool) {
-	w.Buffer.EnsureSpace(5)
 	if v {
 		w.Buffer.Buf = append(w.Buffer.Buf, "true"...)
 	} else {
@@ -524,8 +498,6 @@ func (w *Writer) base64(in []byte) {
 	if len(in) == 0 {
 		return
 	}
-
-	w.Buffer.EnsureSpace(((len(in)-1)/3 + 1) * 4)
 
 	si := 0
 	n := (len(in) / 3) * 3

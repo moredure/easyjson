@@ -109,18 +109,8 @@ func (b *Buffer) Reset() {
 	b.Buf = b.Buf[:0]
 }
 
-// EnsureSpace makes sure that the current chunk contains at least s free bytes,
-// possibly creating a new chunk.
-func (b *Buffer) EnsureSpace(s int) {
-	if cap(b.Buf) < len(b.Buf) + s {
-		 c := make([]byte, len(b.Buf) + s)
-		 b.Buf = c[:copy(c, b.Buf)]
-	}
-}
-
 // AppendByte appends a single byte to buffer.
 func (b *Buffer) AppendByte(data byte) {
-	b.EnsureSpace(1)
 	b.Buf = append(b.Buf, data)
 }
 
