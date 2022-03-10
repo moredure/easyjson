@@ -290,11 +290,8 @@ func (r *Lexer) unescapeStringToken() (err error) {
 			unescapedData = make([]byte, 0, len(r.token.byteValue))
 		}
 
-		var d [4]byte
-		s := utf8.EncodeRune(d[:], escapedRune)
 		unescapedData = append(unescapedData, data[:i]...)
-		unescapedData = append(unescapedData, d[:s]...)
-
+		unescapedData = utf8.AppendRune(unescapedData, escapedRune)
 		data = data[i+escapedBytes:]
 	}
 
